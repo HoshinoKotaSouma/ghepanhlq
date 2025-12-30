@@ -1,0 +1,68 @@
+:root { --primary: #4f46e5; --bg-main: #f0f7ff; }
+* { box-sizing: border-box; outline: none; }
+body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: #e2e8f0; height: 100vh; overflow: hidden; }
+
+.app-shell { display: flex; height: 100vh; padding: 15px; gap: 15px; }
+
+/* Sidebar */
+.sidebar { width: 280px; background: white; border-radius: 24px; padding: 25px; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.brand { font-size: 24px; font-weight: 800; color: #1e293b; margin-bottom: 20px; }
+.brand b { color: var(--primary); }
+.hero-list { flex: 1; overflow-y: auto; margin-top: 10px; }
+.hero-list button {
+    width: 100%; padding: 12px; margin-bottom: 8px; border: none; background: #f8fafc;
+    border-radius: 12px; text-align: left; cursor: pointer; transition: 0.3s; font-weight: 700;
+}
+.hero-list button.active { background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3); }
+
+/* Main Content */
+.main-content { flex: 1; display: flex; flex-direction: column; gap: 15px; height: 100%; }
+.glass-header { background: rgba(255,255,255,0.8); backdrop-filter: blur(15px); padding: 15px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; }
+.input-row { display: flex; gap: 10px; }
+.field { background: white; padding: 5px 12px; border-radius: 10px; border: 1px solid #e2e8f0; }
+.field label { font-size: 9px; font-weight: 800; color: #94a3b8; display: block; }
+.field input { border: none; width: 50px; font-weight: 800; text-align: center; }
+
+.btn-shiny {
+    background: linear-gradient(135deg, #4f46e5, #9333ea); color: white; border: none;
+    padding: 12px 24px; border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.3s;
+}
+
+/* Hàng đợi ảnh nhỏ gọn */
+.queue-area { 
+    background: white; 
+    padding: 10px; 
+    border-radius: 16px; 
+    max-height: 120px; /* Giới hạn chiều cao tối đa của hàng đợi */
+    display: flex;
+    flex-direction: column;
+}
+.queue-track { 
+    display: flex; 
+    gap: 8px; 
+    overflow-x: auto; /* Cho phép cuộn ngang */
+    overflow-y: hidden; 
+    padding: 5px 0;
+    flex-wrap: wrap;
+    flex-shrink: 0; /* Không cho phép hàng đợi phình to ra ngoài kiểm soát */
+}
+.queue-track img { width: 32px; height: 45px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; }
+
+/* Grid ảnh */
+.grid-wrapper { flex: 1; overflow-y: auto; background: var(--bg-main); border-radius: 20px; padding: 15px; }
+.skin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }
+.skin-card { background: white; border-radius: 15px; padding: 5px; cursor: pointer; transition: 0.3s; border: 3px solid transparent; }
+.skin-card.selected { border-color: #10b981; }
+.skin-card img { width: 100%; border-radius: 10px; display: block; }
+
+/* Modal Preview */
+.modal-overlay { position: fixed; pointer-events: auto; inset: 0; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.modal-card { background: white; width: 95vw; height: 90vh; border-radius: 24px; display: flex; flex-direction: column; overflow: hidden; }
+.preview-container { flex: 1; background: #334155; overflow: auto; padding: 40px; text-align: center; }
+#mainCanvas { border-radius: 20px; display: inline-block; }
+.modal-bottom { padding: 15px; text-align: center; border-top: 1px solid #eee; }
+.btn-download { background: var(--primary); color: white; border: none; padding: 12px 50px; border-radius: 12px; font-weight: 800; cursor: pointer; }
+
+.custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+
+.custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
